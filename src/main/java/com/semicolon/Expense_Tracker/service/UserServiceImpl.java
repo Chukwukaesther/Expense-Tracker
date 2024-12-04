@@ -11,6 +11,7 @@ import com.semicolon.Expense_Tracker.dto.response.LogoutUserResponse;
 import com.semicolon.Expense_Tracker.dto.response.RegisterUserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -20,6 +21,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public RegisterUserResponse registerUser(RegisterUserRequest request) {
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
         User user = new User();
         BeanUtils.copyProperties(request, user);
         userRepository.save(user);

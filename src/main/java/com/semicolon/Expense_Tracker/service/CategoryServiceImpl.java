@@ -24,6 +24,7 @@ public class CategoryServiceImpl implements CategoryService{
         category = categoryRepository.save(category);
         CreateCategoryResponse response = new CreateCategoryResponse();
         BeanUtils.copyProperties(category, response);
+
         return response;
     }
     @Override
