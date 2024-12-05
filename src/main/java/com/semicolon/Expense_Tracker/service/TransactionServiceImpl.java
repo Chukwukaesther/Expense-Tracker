@@ -79,7 +79,7 @@ public class TransactionServiceImpl implements TransactionService{
         }
         List<Transaction> transactions = transactionRepository.findByUser(user);
         GetAllTransactionResponse response = new GetAllTransactionResponse();
-        response.setTransactions(transactions);
+        response.setTransaction(transactions);
         response.setMessage("All transactions fetched successfully");
 
 

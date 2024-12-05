@@ -21,8 +21,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public RegisterUserResponse registerUser(RegisterUserRequest request) {
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String password = request.getPassword();
+        if (password == null || password.length() == 0 || password.equals(" ")){
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
         User user = new User();
         BeanUtils.copyProperties(request, user);
         userRepository.save(user);

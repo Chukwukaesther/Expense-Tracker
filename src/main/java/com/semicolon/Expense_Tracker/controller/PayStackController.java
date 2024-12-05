@@ -7,6 +7,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.springframework.stereotype.Controller;
 
+import static javax.crypto.Cipher.SECRET_KEY;
+
 @Controller
 public class PayStackController {
 
@@ -37,4 +39,17 @@ public class PayStackController {
             return response.body().string();
         }
     }
+
+    public void verifyPayment(String reference) throws Exception {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("https://api.paystack.co/transaction/verify/" + reference)
+                .get()
+                .addHeader("Authorization", "Bearer " + SECRET_KEY)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        System.out.println(response.body().string());
+    }
+
 }
