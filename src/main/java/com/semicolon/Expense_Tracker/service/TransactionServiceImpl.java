@@ -24,7 +24,7 @@ public class TransactionServiceImpl implements TransactionService{
     @Override
     public List<CreateTransactionResponse> createTraction(CreateTransactionRequest request) {
         Transaction transaction = new Transaction();
-        Category category =  categoryService.findById(request.getCategoryId());
+        Category category =  categoryService.findById(request.getUserId());
         transaction.setCategory(category);
         User user = userService.findById(request.getUserId());
         transaction.setUser(user);

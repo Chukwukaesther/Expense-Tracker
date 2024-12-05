@@ -7,6 +7,11 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.springframework.stereotype.Controller;
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
+import java.util.Base64;
+
 import static javax.crypto.Cipher.SECRET_KEY;
 
 @Controller
@@ -40,16 +45,18 @@ public class PayStackController {
         }
     }
 
-    public void verifyPayment(String reference) throws Exception {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("https://api.paystack.co/transaction/verify/" + reference)
-                .get()
-                .addHeader("Authorization", "Bearer " + SECRET_KEY)
-                .build();
+    public static boolean verify(String payload, String signature) throws Exception {
 
-        Response response = client.newCall(request).execute();
-        System.out.println(response.body().string());
+        Mac sha512Hmac = Mac.getInstance("HmacSHA512");
+        SecretKeySpec keySpec = new SecretKeySpec(PAYSTACK_SECRET_KEY.getBytes(), "HmacSHA512");
+        sha512Hmac.init(keySpec);
+
+        byte[] macData = sha512Hmac.doFinal(payload.getBytes());
+        String calculatedSignature = Base64.getEncoder().encodeToString(macData);
+
+        return calculatedSignature.equals(signature);
     }
+
+
 
 }
