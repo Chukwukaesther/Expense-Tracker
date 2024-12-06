@@ -8,12 +8,12 @@ import com.semicolon.Expense_Tracker.dto.request.UpdateCategoryRequest;
 import com.semicolon.Expense_Tracker.dto.response.CreateCategoryResponse;
 import com.semicolon.Expense_Tracker.dto.response.DeleteCategoryResponse;
 import com.semicolon.Expense_Tracker.dto.response.UpdateCategoryResponse;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CategoryServiceImpl implements CategoryService{
     private final CategoryRepository categoryRepository;
 

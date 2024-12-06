@@ -9,12 +9,12 @@ import com.semicolon.Expense_Tracker.dto.request.RegisterUserRequest;
 import com.semicolon.Expense_Tracker.dto.response.LoginUserResponse;
 import com.semicolon.Expense_Tracker.dto.response.LogoutUserResponse;
 import com.semicolon.Expense_Tracker.dto.response.RegisterUserResponse;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Service
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;

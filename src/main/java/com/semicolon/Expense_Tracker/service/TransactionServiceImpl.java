@@ -7,7 +7,7 @@ import com.semicolon.Expense_Tracker.data.model.User;
 import com.semicolon.Expense_Tracker.data.repository.TransactionRepository;
 import com.semicolon.Expense_Tracker.dto.request.*;
 import com.semicolon.Expense_Tracker.dto.response.*;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class TransactionServiceImpl implements TransactionService{
     private final UserService userService;
     private final CategoryService categoryService;
